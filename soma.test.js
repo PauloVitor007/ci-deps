@@ -1,7 +1,7 @@
-const test = require('node:test');
-const assert = require('node:assert');
-const soma = require('./soma');
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { soma } from './soma.js';
 
-test('soma 1 + 2 e deve retornar 3', () => {
-  assert.strictEqual(soma(1, 2), 3);
+test('soma dois números', () => {
+  assert.equal(soma(2, 3), 5);
 });
