@@ -1,0 +1,26 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Baixa o código do seu repositório
+    - name: Fazer checkout do código
+      uses: actions/checkout@v4
+
+    # 2. Prepara o ambiente com o Node.js 22
+    - name: Configurar Node.js 22
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+
+    # 3. Roda os testes
+    - name: Rodar testes nativos
+      run: npm test
