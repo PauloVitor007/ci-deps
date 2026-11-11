@@ -1,22 +1,15 @@
-steps:
-    # 1. Baixa o código do seu repositório
-    - name: Fazer checkout do código
-      uses: actions/checkout@v4
-
-    # 2. Prepara o ambiente com o Node.js 22
-    - name: Configurar Node.js 22
-      uses: actions/setup-node@v4
-      with:
-        node-version: 22
-
-    # 3. Instala as dependências (eslint e prettier)
-    - name: Instalar dependências
-      run: npm ci
-
-    # 4. Verifica o padrão do código
-    - name: Rodar Linter
-      run: npm run lint
-
-    # 5. Roda os testes
-    - name: Rodar testes nativos
-      run: npm test
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npm test
