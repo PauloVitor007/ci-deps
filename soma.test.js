@@ -3,5 +3,5 @@ import assert from 'node:assert/strict';
 import { soma } from './soma.js';
 
 test('soma dois números', () => {
-  assert.equal(soma(2, 3), 6);
+  assert.equal(soma(2, 3), 5);
 });
