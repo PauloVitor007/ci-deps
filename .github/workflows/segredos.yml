@@ -1,0 +1,20 @@
+name: Segredos
+on:
+  workflow_dispatch:
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar a variável
+        env:
+          AMBIENTE: ${{ vars.AMBIENTE }}
+        run: printf 'Ambiente = %s\n' "$AMBIENTE"
+      - name: Verificar se o segredo está configurado
+        env:
+          SEGREDO: ${{ secrets.MEU_SEGREDO }}
+        run: |
+          if [ -n "$SEGREDO" ]; then
+            echo "O segredo está configurado."
+          else
+            echo "O segredo não está configurado."
+          fi
